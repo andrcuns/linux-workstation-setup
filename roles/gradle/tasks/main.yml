@@ -1,0 +1,6 @@
+---
+
+- name: Install Gradle
+  pacman:
+    name: gradle
+    state: latest

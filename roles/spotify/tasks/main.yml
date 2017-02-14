@@ -1,0 +1,8 @@
+---
+
+- name: Install Spotify client
+  aur:
+    name: spotify
+    user: "{{ user.name }}"
+  tags:
+    - aur

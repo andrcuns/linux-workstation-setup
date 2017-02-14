@@ -1,0 +1,45 @@
+---
+
+- name: Perform upgrade
+  pacman:
+    update_cache: yes
+    upgrade: yes
+
+- name: Install essential libs
+  pacman:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - jq
+    - httpie
+    - expect
+
+- name: Symlink itself to ~/.ansiblefiles
+  file:
+    src: "{{ playbook_dir }}"
+    dest: "{{ ansiblefiles_location }}"
+    state: link
+    force: yes
+  become: no
+  when: "playbook_dir != ansiblefiles_location"
+
+- name: Install common software
+  pacman:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - tilda
+    - pgadmin3
+    - htop
+    - cifs-utils
+    - samba
+    - ufw
+    - npm
+
+- name: Create AUR directory
+  file:
+    path: "/home/{{ user.name }}/aur"
+    state: directory
+  become: no
+  tags:
+    - aur

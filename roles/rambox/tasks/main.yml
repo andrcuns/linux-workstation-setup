@@ -1,0 +1,8 @@
+---
+
+- name: Install rambox
+  aur:
+    name: rambox-bin
+    user: "{{ user.name }}"
+  tags:
+    - aur

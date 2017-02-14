@@ -1,0 +1,22 @@
+---
+
+- name: Install freerdp
+  aur:
+    name: freerdp-git
+    user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Install Remmina
+  aur:
+    name: remmina-git
+    user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Install Remmina-RDP plugin
+  aur:
+    name: remmina-plugin-rdesktop
+    user: "{{ user.name }}"
+  tags:
+    - aur

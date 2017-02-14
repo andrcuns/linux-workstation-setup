@@ -1,0 +1,11 @@
+---
+
+- name: Install stow
+  pacman:
+    name: stow
+    state: latest
+
+- name: Symlink configs
+  command: "stow -d {{ stow_files }} -S {{ item }}"
+  with_lines: cat {{ vault_stowed_configs }}
+  become: no

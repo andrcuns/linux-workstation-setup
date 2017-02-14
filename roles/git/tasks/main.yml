@@ -1,0 +1,18 @@
+---
+
+- name: Install Git
+  pacman:
+    name: git
+    state: latest
+
+- name: Install diff-so-fancy
+  npm:
+    name: diff-so-fancy
+    global: yes
+    state: latest
+
+- name: Install gitkraken
+  pacman:
+    name: gitkraken
+    state: latest
+

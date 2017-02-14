@@ -1,0 +1,9 @@
+---
+
+- name: Install Python packages
+  pacman:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - python
+    - python-pip

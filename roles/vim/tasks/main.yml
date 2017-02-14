@@ -1,0 +1,14 @@
+- name: Install vim-gtk
+  pacman:
+    name: gvim
+    state: latest
+
+- name: Clone vimrc repo
+  git:
+    repo: https://github.com/andrcuns/vimrc.git
+    dest: ~/.vim_runtime
+  become: no
+
+- name: Install vimrc
+  shell: ~/.vim_runtime/install_awesome_vimrc.sh
+  become: no

@@ -1,0 +1,8 @@
+---
+
+omzsh_custom_dir: "{{ user.home }}/.oh-my-zsh/custom"
+omzsh_themes_dir: "{{ omzsh_custom_dir }}/themes"
+omzsh_plugins_dir: "{{ omzsh_custom_dir }}/plugins"
+base_16_theme_repo: "{{ github }}chriskempson/base16-shell.git"
+base_16_target_dir: ~/.config/base16-shell
+pure_theme_repo: "{{ github }}sindresorhus/pure.git"

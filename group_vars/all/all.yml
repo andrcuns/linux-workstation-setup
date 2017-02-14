@@ -1,0 +1,9 @@
+---
+
+ansiblefiles_location: "{{ user.home }}/.ansiblefiles"
+tmp_files_dir: "{{ ansiblefiles_location }}/tmp"
+github: "https://github.com/"
+
+user:
+  name: "{{ lookup('env', 'USER') }}"
+  home: "{{ lookup('env', 'HOME') }}"

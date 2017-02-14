@@ -1,0 +1,11 @@
+---
+
+- name: Install Java8
+  aur:
+    name: jdk
+    user: "{{ user.name }}"
+  tags:
+    - aur
+
+- name: Set Java8 as default
+  shell: "archlinux-java set java-8-jdk"

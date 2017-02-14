@@ -1,0 +1,25 @@
+---
+
+- name: Install Docker
+  pacman:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - docker
+    - docker-compose
+
+- name: Add user to docker group
+  user:
+    name: "{{ user.name }}"
+    groups: docker
+    append: yes
+
+- name: Update ufw to allow forwarding
+  lineinfile:
+    dest: /etc/default/ufw
+    regexp: DEFAULT_FORWARD_POLICY=
+    line: DEFAULT_FORWARD_POLICY="ACCEPT"
+
+- name: Reload ufw
+  ufw:
+    state: reloaded
