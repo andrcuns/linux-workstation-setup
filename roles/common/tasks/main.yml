@@ -35,6 +35,14 @@
     - samba
     - ufw
     - npm
+    - tlp
+
+  -name: Install clipit
+    aur:
+      name: clipit
+      user: "{{ user.name }}"
+    tags:
+      - aur
 
 - name: Create AUR directory
   file:
