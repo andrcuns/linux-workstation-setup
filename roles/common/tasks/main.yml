@@ -36,6 +36,7 @@
     - ufw
     - npm
     - tlp
+    - ecryptfs-utils
 
   -name: Install clipit
     aur:
