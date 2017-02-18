@@ -7,3 +7,12 @@ github: "https://github.com/"
 user:
   name: "{{ lookup('env', 'USER') }}"
   home: "{{ lookup('env', 'HOME') }}"
+
+stow_files_dest: ~/.dotfiles
+ssh_keys:
+  [ "{{ stow_files_dest }}/keys/private",
+  "{{ stow_files_dest }}/keys/private.pub",
+  "{{ stow_files_dest }}/keys/id_rsa",
+  "{{ stow_files_dest }}/keys/id_rsa.pub" ]
+gpg_keys: [ "{{ stow_files_dest }}/keys/mygpgkey_pub.gpg", "{{ stow_files_dest }}/keys/mygpgkey_sec.gpg" ]
+stowed_configs: "{{ stow_files_dest }}/stow.txt"

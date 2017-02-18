@@ -13,7 +13,7 @@
     mode: 0600
   become: no
   with_items:
-    - "{{ vault_ssh_keys }}"
+    - "{{ ssh_keys }}"
 
 - name: Import gpg key pair
   command: gpg --import "{{ item }}"
@@ -21,4 +21,4 @@
   failed_when: "'processed: 1' not in command_result.stderr"
   become: no
   with_items:
-    - "{{ vault_gpg_keys }}"
+    - "{{ gpg_keys }}"

@@ -5,10 +5,14 @@
 
 - name: Clone vimrc repo
   git:
-    repo: https://github.com/andrcuns/vimrc.git
+    repo: git@github.com:andrcuns/vimrc.git
     dest: ~/.vim_runtime
   become: no
 
 - name: Install vimrc
   shell: ~/.vim_runtime/install_awesome_vimrc.sh
+  become: no
+
+- name: Add upstream of vimrc
+  command: cd ~/.vim_runtime && git remote add upstream https://github.com/amix/vimrc.git
   become: no
