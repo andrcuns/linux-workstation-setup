@@ -10,6 +10,7 @@
     - { role: pass, tags: "pass" }
     - { role: atom, tags: "atom" }
     - { role: idea, tags: "idea" }
+    - { role: vscode, tags: "vscode" }
     - { role: neovim, tags: "neovim" }
     - { role: chrome, tags: "chrome" }
     - { role: docker, tags: "docker" }
