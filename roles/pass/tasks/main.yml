@@ -5,9 +5,3 @@
     name: pass
     state: latest
 
-- name: Clone password store
-  git:
-    repo: "{{ vault_pass_store }}"
-    dest: "~/.password-store"
-    accept_hostkey: yes
-  become: no

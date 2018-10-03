@@ -10,40 +10,52 @@
     name: "{{ item }}"
     state: latest
   with_items:
-    - jq
-    - httpie
+    - base-devel
     - expect
-
-- name: Symlink itself to ~/.ansiblefiles
-  file:
-    src: "{{ playbook_dir }}"
-    dest: "{{ ansiblefiles_location }}"
-    state: link
-    force: yes
-  become: no
-  when: "playbook_dir != ansiblefiles_location"
+    - go
+    - python
+    - python-pip
+    - ruby
+    - npm
+    - yarn
 
 - name: Install common software
   pacman:
     name: "{{ item }}"
     state: latest
   with_items:
-    - tilda
-    - pgadmin3
+    - jq
+    - httpie
+    - guake
     - htop
     - cifs-utils
     - samba
     - ufw
-    - npm
     - tlp
     - ecryptfs-utils
+    - bat
+    - ncdu
 
-  -name: Install clipit
-    aur:
-      name: clipit
-      user: "{{ user.name }}"
-    tags:
-      - aur
+- name: Install additional aur software
+  aur:
+    name: "{{ item }}"
+    user: "{{ user.name }}"
+  with_items:
+    - direnv
+    - clipit
+    - prettyping
+  tags:
+    - aur
+
+- name: Install latest global npm packages
+  npm:
+    name: "{{ item }}"
+    global: yes
+    state: latest
+  with_items:
+    - nodemon
+    - tslint
+    - eslint
 
 - name: Create AUR directory
   file:

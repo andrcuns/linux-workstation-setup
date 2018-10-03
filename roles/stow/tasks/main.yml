@@ -5,13 +5,7 @@
     name: stow
     state: latest
 
-- name: Clone stow files
-  git:
-    repo: "{{ vault_stow_files }}"
-    dest: "{{ stow_files_dest }}"
-  become: no
-
 - name: Symlink configs
-  command: "stow -d {{ stow_files_dest }} -S {{ item }}"
-  with_lines: cat {{ stowed_configs }}
+  command: "stow -d {{ dotfiles }} -S {{ item }}"
+  with_lines: "cat {{ dotfiles }}/stow.txt"
   become: no

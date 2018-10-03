@@ -1,21 +1,27 @@
 ---
 
-- name: Install zsh libs
+- name: Install zsh
   pacman:
     name: zsh
     state: latest
-- name: Install oh-my-zsh
-  aur:
-    name: oh-my-zsh-git
-    user: "{{ user.name }}"
-  tags:
-    - aur
 
-- name: Clone Base16 repo
+- name: Install oh-my-zsh
+  shell: "curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash"
+  args:
+    creates: "{{ user.home }}/.oh-my-zsh"
+    warn: false
+  become: no
+
+- name: Cloninig custom plugins
   git:
-    repo: "{{ github }}chriskempson/base16-shell.git"
-    dest: "{{ user.home }}/.config/base16-shell"
+    repo: "{{ github }}zsh-users/{{ item }}.git"
+    dest: "{{ omzsh_plugins_dir }}/{{ item }}"
     accept_hostkey: yes
+  with_items:
+    - zsh-syntax-highlighting
+    - zsh-autosuggestions
+    - zsh-completions
+    - zsh-history-substring-search
   become: no
 
 - name: Clone pure theme
@@ -30,21 +36,28 @@
     src: "{{ item.src }}"
     dest: "{{ item.dest }}"
     state: link
-  become: no
   with_items:
     - { src: '{{ omzsh_themes_dir }}/pure/async.zsh' , dest: '{{ omzsh_custom_dir }}/async.zsh' }
     - { src: '{{ omzsh_themes_dir }}/pure/pure.zsh' , dest: '{{ omzsh_themes_dir }}/pure.zsh-theme' }
-
-- name: Clone custom plugins
-  git:
-    repo: "{{ github }}zsh-users/{{ item }}.git"
-    dest: "{{ omzsh_plugins_dir }}/{{ item }}"
-    accept_hostkey: yes
   become: no
-  with_items:
-    - "zsh-syntax-highlighting"
-    - "zsh-autosuggestions"
-    - "zsh-completions"
+
+- name: Checking for original .zshrc
+  stat:
+    path: "{{ user.home }}/.zshrc"
+  register: stat_zshrc
+
+- name: Backing up .zshrc file
+  command: mv ~/.zshrc ~/.zshrc.bak
+  args:
+    creates: ~/.zshrc.bak
+  become: no
+  when: stat_zshrc.stat.exists
+
+- name: Create .zshrc
+  template:
+    src: .zshrc.j2
+    dest: "{{ user.home }}/.zshrc"
+  become: no
 
 - name: Set zsh as default shell
   user:

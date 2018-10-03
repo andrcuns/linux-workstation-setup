@@ -10,9 +10,3 @@
     name: diff-so-fancy
     global: yes
     state: latest
-
-- name: Install gitkraken
-  pacman:
-    name: gitkraken
-    state: latest
-

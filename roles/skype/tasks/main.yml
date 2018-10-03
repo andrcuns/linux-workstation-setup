@@ -1,8 +1,0 @@
----
-
-- name: Install Skype Alpha
-  aur:
-    name: skypeforlinux-bin
-    user: "{{ user.name }}"
-  tags:
-    - aur

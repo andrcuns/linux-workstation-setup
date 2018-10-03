@@ -2,7 +2,7 @@
 
 - name: Install Google Chrome
   aur:
-    name: google-chrome-beta
+    name: google-chrome
     user: "{{ user.name }}"
   tags:
     - aur

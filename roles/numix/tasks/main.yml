@@ -1,6 +1,0 @@
----
-
-- name: Install Numix circle icons
-  pacman:
-    name: numix-icon-theme-circle
-    state: latest

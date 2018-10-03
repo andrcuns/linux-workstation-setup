@@ -4,27 +4,18 @@
   become: yes
   roles:
     - { role: common, tags: "common" }
-    - { role: stow, tags: "stow" }
     - { role: git, tags: "git" }
-    - { role: keys, tags: "keys" }
-    - { role: pass, tags: "pass" }
-    - { role: chrome, tags: "chrome" }
-    - { role: python, tags: "python" }
-    - { role: docker, tags: "docker" }
-    - { role: jdk, tags: "jdk" }
-    - { role: gradle, tags: "gradle" }
-    - { role: nodejs, tags: "nodejs" }
-    - { role: ruby, tags: "ruby" }
-    - { role: atom, tags: "atom" }
     - { role: shell, tags: "shell" }
-    - { role: sublime, tags: "sublime" }
-    - { role: virtualbox, tags: "virtualbox" }
-    - { role: remmina, tags: "remmina" }
-    - { role: skype, tags: "skype" }
-    - { role: spotify, tags: "spotify" }
-    - { role: vim, tags: "vim" }
-    - { role: slack, tags: "slack" }
+    - { role: sdks, tags: "sdks", become: no }
+    - { role: pass, tags: "pass" }
+    - { role: atom, tags: "atom" }
     - { role: idea, tags: "idea" }
+    - { role: neovim, tags: "neovim" }
+    - { role: chrome, tags: "chrome" }
+    - { role: docker, tags: "docker" }
+    - { role: virtualbox, tags: "virtualbox" }
+    - { role: spotify, tags: "spotify" }
+    - { role: slack, tags: "slack" }
     - { role: rambox, tags: "rambox" }
-    - { role: outlook, tags: "outlook" }
     - { role: configuration, tags: "configuration" }
+    - { role: stow, tags: "stow" }

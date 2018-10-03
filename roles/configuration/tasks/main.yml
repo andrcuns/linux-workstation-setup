@@ -9,10 +9,3 @@
   with_items:
     - { line: "#Password less sudo", regexp: '^#Password' }
     - { line: "{{ user.name }} ALL=(ALL) NOPASSWD: ALL", regexp: '^{{ user.name }}' }
-
-- name: Change domain name in avahi config
-  lineinfile:
-    dest: /etc/avahi/avahi-daemon.conf
-    state: present
-    regexp: '^#domain-name='
-    line: domain-name=.alocal

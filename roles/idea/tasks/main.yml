@@ -2,5 +2,5 @@
 
 - name: Install intelliJIdea
   aur:
-    name: intellij-idea-ultimate-edition
+    name: intellij-idea-ce
     user: "{{ user.name }}"
