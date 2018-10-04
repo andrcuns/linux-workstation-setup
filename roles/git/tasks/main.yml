@@ -6,7 +6,8 @@
     state: latest
 
 - name: Install diff-so-fancy
-  npm:
+  yarn:
     name: diff-so-fancy
     global: yes
     state: latest
+  become: no

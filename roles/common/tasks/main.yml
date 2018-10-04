@@ -16,7 +16,6 @@
     - python
     - python-pip
     - ruby
-    - npm
     - yarn
 
 - name: Install common software
@@ -35,6 +34,7 @@
     - ecryptfs-utils
     - bat
     - ncdu
+    - gpaste
 
 - name: Install additional aur software
   aur:
@@ -42,13 +42,12 @@
     user: "{{ user.name }}"
   with_items:
     - direnv
-    - clipit
     - prettyping
   tags:
     - aur
 
 - name: Install latest global npm packages
-  npm:
+  yarn:
     name: "{{ item }}"
     global: yes
     state: latest
@@ -56,6 +55,7 @@
     - nodemon
     - tslint
     - eslint
+  become: no
 
 - name: Create AUR directory
   file:
