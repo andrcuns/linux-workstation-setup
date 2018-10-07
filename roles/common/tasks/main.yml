@@ -50,5 +50,6 @@
   with_items:
     - direnv
     - prettyping
+    - albert
   tags:
     - aur
