@@ -1,9 +1,9 @@
 ---
 
 - name: Install Visual Studio Code
-  pacman:
-    name: code
-    state: latest
+  aur:
+    name: visual-studio-code-bin
+    user: "{{ user.name }}"
 
 - name: Install extensions
   shell: "code --install-extension {{ item }}"
@@ -24,3 +24,4 @@
     - vscoss.vscode-ansible
     - wholroyd.jinja
     - trinm1709.dracula-theme-from-intellij
+  become: no

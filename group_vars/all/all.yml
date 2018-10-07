@@ -5,3 +5,5 @@ user:
 
 github: "https://github.com/"
 dotfiles: "{{ user.home }}/.dotfiles"
+
+source_shell: "[ $(echo $0) = '-zsh' ] && source {{ user.home }}/.zshrc || source {{ user.home }}/.bashrc"

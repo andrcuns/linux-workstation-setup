@@ -14,7 +14,7 @@
   become: no
 
 - name: Install latest node version
-  shell: "nvm install node"
+  shell: "{{ source_shell }} && nvm install node"
   become: no
 
 - name: Install yarn
