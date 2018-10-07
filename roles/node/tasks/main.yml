@@ -1,0 +1,34 @@
+---
+
+- name: Check if nvm is installed
+  stat:
+    path: "{{ user.home }}/.nvm"
+  register: nvm
+
+- name: Installing node version manager
+  shell: "curl -o- https://raw.githubusercontent.com/creationix/nvm/v{{ nvm_version }}/install.sh | bash"
+  args:
+    creates: "{{ user.home }}/.nvm"
+    warn: false
+  when: not nvm.stat.exists
+  become: no
+
+- name: Install latest node version
+  shell: "nvm install node"
+  become: no
+
+- name: Install yarn
+  pacman:
+    name: yarn
+    state: latest
+
+- name: Install latest global npm packages
+  yarn:
+    name: "{{ item }}"
+    global: yes
+    state: latest
+  with_items:
+    - nodemon
+    - tslint
+    - eslint
+  become: no

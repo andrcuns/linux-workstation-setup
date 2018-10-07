@@ -4,19 +4,20 @@
   become: yes
   roles:
     - { role: common, tags: "common" }
-    - { role: git, tags: "git" }
+    - { role: node, tags: "node" }
     - { role: shell, tags: "shell" }
     - { role: sdks, tags: "sdks", become: no }
+    - { role: git, tags: "git" }
+    - { role: docker, tags: "docker" }
     - { role: pass, tags: "pass" }
-    - { role: atom, tags: "atom" }
-    - { role: idea, tags: "idea" }
     - { role: vscode, tags: "vscode" }
+    - { role: idea, tags: "idea" }
+    - { role: atom, tags: "atom" }
     - { role: neovim, tags: "neovim" }
     - { role: chrome, tags: "chrome" }
-    - { role: docker, tags: "docker" }
     - { role: virtualbox, tags: "virtualbox" }
     - { role: spotify, tags: "spotify" }
     - { role: slack, tags: "slack" }
     - { role: rambox, tags: "rambox" }
-    - { role: configuration, tags: "configuration" }
     - { role: stow, tags: "stow" }
+    - { role: configuration, tags: "configuration" }

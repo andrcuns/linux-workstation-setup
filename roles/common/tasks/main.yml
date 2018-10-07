@@ -16,7 +16,6 @@
     - python
     - python-pip
     - ruby
-    - yarn
 
 - name: Install common software
   pacman:
@@ -36,6 +35,14 @@
     - ncdu
     - gpaste
 
+- name: Create AUR directory
+  file:
+    path: "/home/{{ user.name }}/aur"
+    state: directory
+  become: no
+  tags:
+    - aur
+
 - name: Install additional aur software
   aur:
     name: "{{ item }}"
@@ -43,24 +50,5 @@
   with_items:
     - direnv
     - prettyping
-  tags:
-    - aur
-
-- name: Install latest global npm packages
-  yarn:
-    name: "{{ item }}"
-    global: yes
-    state: latest
-  with_items:
-    - nodemon
-    - tslint
-    - eslint
-  become: no
-
-- name: Create AUR directory
-  file:
-    path: "/home/{{ user.name }}/aur"
-    state: directory
-  become: no
   tags:
     - aur
