@@ -1,2 +1,3 @@
-init_sdkman: "source {{ user.home }}/.sdkman/bin/sdkman-init.sh"
+sdk_home: "{{ user.home }}/.sdkman"
+init_sdkman: "source {{ sdk_home }}/bin/sdkman-init.sh"
 sdks: [ java, gradle, maven, groovy ]

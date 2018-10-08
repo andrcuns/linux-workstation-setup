@@ -15,4 +15,3 @@
     - git-log
     - git-control
   become: no
-  changed_when: false

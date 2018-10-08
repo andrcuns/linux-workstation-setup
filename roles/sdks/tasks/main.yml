@@ -2,13 +2,13 @@
 
 - name: Check if sdkman is installed
   stat:
-    path: "{{ user.home }}/.sdkman"
+    path: "{{ sdk_home }}"
   register: sdk
 
 - name: Installing sdk manager
   shell: "curl -s https://get.sdkman.io | bash"
   args:
-    creates: "{{ user.home }}/.sdkman"
+    creates: "{{ sdk_home }}"
     warn: false
   when: not sdk.stat.exists
 

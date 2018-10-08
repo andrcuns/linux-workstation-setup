@@ -18,14 +18,11 @@
 
 - name: Cloninig custom plugins
   git:
-    repo: "{{ github }}zsh-users/{{ item }}.git"
-    dest: "{{ omzsh_plugins_dir }}/{{ item }}"
+    repo: "{{ github }}{{ item.value }}/{{ item.key }}.git"
+    dest: "{{ omzsh_plugins_dir }}/{{ item.key }}"
     accept_hostkey: yes
-  with_items:
-    - zsh-syntax-highlighting
-    - zsh-autosuggestions
-    - zsh-completions
-    - zsh-history-substring-search
+  with_dict:
+    "{{ omzsh_plugins }}"
   become: no
 
 - name: Clone pure theme
@@ -45,19 +42,19 @@
     - { src: '{{ omzsh_themes_dir }}/pure/pure.zsh' , dest: '{{ omzsh_themes_dir }}/pure.zsh-theme' }
   become: no
 
-- name: Checking for original .zshrc
+- name: Check for original .zshrc
   stat:
     path: "{{ user.home }}/.zshrc"
   register: stat_zshrc
 
-- name: Backing up .zshrc file
+- name: Back up .zshrc file
   command: mv ~/.zshrc ~/.zshrc.bak
   args:
     creates: ~/.zshrc.bak
   become: no
   when: stat_zshrc.stat.exists
 
-- name: Create .zshrc
+- name: Create .zshrc from template
   template:
     src: .zshrc.j2
     dest: "{{ user.home }}/.zshrc"

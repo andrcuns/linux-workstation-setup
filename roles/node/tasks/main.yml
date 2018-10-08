@@ -1,20 +1,21 @@
 ---
 
-- name: Check if nvm is installed
-  stat:
-    path: "{{ user.home }}/.nvm"
-  register: nvm
-
-- name: Installing node version manager
-  shell: "curl -o- https://raw.githubusercontent.com/creationix/nvm/v{{ nvm_version }}/install.sh | bash"
-  args:
-    creates: "{{ user.home }}/.nvm"
-    warn: false
-  when: not nvm.stat.exists
+- name: Clone node version manager
+  git:
+    repo: "{{ github }}creationix/nvm.git"
+    dest: "{{ nvm_home }}"
+    accept_hostkey: yes
   become: no
 
+- name: Set nvm to latest version
+  shell: "git checkout `git describe --abbrev=0 --tags --match \"v[0-9]*\" $(git rev-list --tags --max-count=1)`"
+  args:
+    chdir: "{{ nvm_home }}"
+  become: no
+
+
 - name: Install latest node version
-  shell: "{{ source_shell }} && nvm install node"
+  shell: "{{ init_nvm }} && nvm install node"
   become: no
 
 - name: Install yarn
