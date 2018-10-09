@@ -24,4 +24,6 @@
     - vscoss.vscode-ansible
     - wholroyd.jinja
     - trinm1709.dracula-theme-from-intellij
+  register: result
   become: no
+  changed_when: "'is already installed' not in result.stdout"

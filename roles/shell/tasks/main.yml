@@ -14,6 +14,8 @@
 
 - name: Install oh-my-zsh
   shell: "{{ omzsh_dir }}/tools/install.sh"
+  register: result
+  changed_when: "'You already have Oh My Zsh installed' not in result.stdout"
   become: no
 
 - name: Cloninig custom plugins
