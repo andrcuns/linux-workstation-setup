@@ -10,4 +10,3 @@
     name: diff-so-fancy
     global: yes
     state: latest
-  become: no

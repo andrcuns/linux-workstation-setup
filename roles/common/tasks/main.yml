@@ -7,33 +7,33 @@
 
 - name: Install essential libs
   pacman:
-    name: "{{ item }}"
+    name: [
+      base-devel,
+      expect,
+      go,
+      python,
+      python-pip,
+      ruby
+    ]
     state: latest
-  with_items:
-    - base-devel
-    - expect
-    - go
-    - python
-    - python-pip
-    - ruby
 
 - name: Install common software
   pacman:
-    name: "{{ item }}"
+    name: [
+      jq,
+      httpie,
+      guake,
+      htop,
+      cifs-utils,
+      samba,
+      ufw,
+      tlp,
+      ecryptfs-utils,
+      bat,
+      ncdu,
+      gpaste
+    ]
     state: latest
-  with_items:
-    - jq
-    - httpie
-    - guake
-    - htop
-    - cifs-utils
-    - samba
-    - ufw
-    - tlp
-    - ecryptfs-utils
-    - bat
-    - ncdu
-    - gpaste
 
 - name: Create AUR directory
   file:

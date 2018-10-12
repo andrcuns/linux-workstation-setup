@@ -2,11 +2,8 @@
 
 - name: Install Docker
   pacman:
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - docker
-    - docker-compose
+    name: [docker, docker-compose]
+    state: latest 
 
 - name: Add user to docker group
   user:
