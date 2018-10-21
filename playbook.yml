@@ -1,0 +1,24 @@
+---
+
+- hosts: localhost
+  become: yes
+  roles:
+    - { role: common, tags: "common" }
+    - { role: node, tags: "node" }
+    - { role: shell, tags: "shell" }
+    - { role: sdks, tags: "sdks", become: no }
+    - { role: git, tags: "git" }
+    - { role: docker, tags: "docker" }
+    - { role: pass, tags: "pass" }
+    - { role: vscode, tags: "vscode" }
+    - { role: idea, tags: "idea" }
+    - { role: atom, tags: "atom" }
+    - { role: neovim, tags: "neovim" }
+    - { role: spotify, tags: "spotify" }
+    - { role: slack, tags: "slack" }
+    - { role: rambox, tags: "rambox" }
+    - { role: stow, tags: "stow" }
+    - { role: configuration, tags: "configuration" }
+    - { role: ulauncher, tags: "ulauncher" }
+    - { role: gnome, tags: "gnome" }
+    - { role: xps, tags: "xps" }

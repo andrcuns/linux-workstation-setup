@@ -1,0 +1,45 @@
+---
+
+- name: Perform upgrade
+  apt:
+    update_cache: yes
+    upgrade: dist
+
+- name: Enable universe and multiverse repos
+  apt_repository:
+    repo: "{{ item }}"
+  with_items:
+      - "deb http://lv.archive.ubuntu.com/ubuntu/ {{ ubuntu_codename }} universe"
+      - "deb http://lv.archive.ubuntu.com/ubuntu/ {{ ubuntu_codename }} multiverse" 
+
+- name: Install essential libs
+  apt:
+    name: [
+      build-essential,
+      expect,
+      python,
+      python-pip,
+      ruby
+    ]
+
+- name: Install common software
+  apt:
+    name: [
+      jq,
+      httpie,
+      tilda,
+      htop,
+      cifs-utils,
+      samba,
+      ufw,
+      ecryptfs-utils,
+      ncdu,
+      gpaste,
+      direnv,
+      curl,
+      wget
+    ]
+
+- name: Install bat
+  apt:
+    deb: https://github.com/sharkdp/bat/releases/download/v0.8.0/bat_0.8.0_amd64.deb

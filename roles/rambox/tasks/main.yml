@@ -1,0 +1,5 @@
+---
+
+- name: Install rambox
+  apt:
+    deb: https://github.com/ramboxapp/community-edition/releases/download/0.6.1/Rambox-0.6.1-linux-amd64.deb

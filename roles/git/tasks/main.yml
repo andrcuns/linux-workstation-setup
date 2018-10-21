@@ -1,0 +1,11 @@
+---
+
+- name: Install Git
+  apt:
+    name: git
+
+- name: Install diff-so-fancy
+  yarn:
+    name: diff-so-fancy
+    global: yes
+    state: latest

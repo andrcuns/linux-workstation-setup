@@ -1,0 +1,9 @@
+---
+
+- name: Add ulauncher ppa
+  apt_repository:
+    repo: ppa:agornostal/ulauncher
+
+- name: Install ulauncher
+  apt:
+    name: ulauncher

@@ -1,0 +1,6 @@
+---
+
+- name: Install intelliJIdea
+  snap:
+    name: intellij-idea-community
+    classic: yes

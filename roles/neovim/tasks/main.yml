@@ -1,0 +1,17 @@
+---
+
+- name: Install nvim
+  apt:
+    name: neovim
+
+- name: Create nvim config dir
+  file:
+    path: "{{ user.home }}/.config/nvim"
+    state: directory
+  become: no
+
+- name: Set init.vim
+  template:
+    src: init.vim.j2
+    dest: "{{ user.home }}/.config/nvim/init.vim"
+  become: no

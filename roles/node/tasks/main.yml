@@ -1,0 +1,47 @@
+---
+
+- name: Clone node version manager
+  git:
+    repo: "{{ github }}creationix/nvm.git"
+    dest: "{{ nvm_home }}"
+    accept_hostkey: yes
+  become: no
+
+- name: Set nvm to latest version
+  shell: "git checkout `git describe --abbrev=0 --tags --match \"v[0-9]*\" $(git rev-list --tags --max-count=1)`"
+  args:
+    chdir: "{{ nvm_home }}"
+  become: no
+
+- name: Install latest node version
+  shell: "{{ init_nvm }} && nvm install node"
+  register: nvm_result
+  changed_when: "'is already installed' not in nvm_result.stderr"
+  become: no
+
+- name: Remove cmdest
+  apt:
+    name: cmdtest
+    state: absent
+
+- name: Add yarn apt key
+  apt_key:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+
+- name: Add yarn repository
+  apt_repository:
+    repo: deb https://dl.yarnpkg.com/debian/ stable main
+  
+- name: Install yarn
+  apt:
+    name: yarn
+
+- name: Install latest global npm packages
+  yarn:
+    name: "{{ item }}"
+    global: yes
+    state: latest
+  with_items:
+    - nodemon
+    - tslint
+    - eslint
