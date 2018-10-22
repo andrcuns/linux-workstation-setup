@@ -21,3 +21,4 @@
     - { role: rambox, tags: "rambox" }
     - { role: stow, tags: "stow" }
     - { role: configuration, tags: "configuration" }
+    - { role: xps, tags: "xps" }
