@@ -1,0 +1,5 @@
+---
+
+- name: Install albert
+  apt:
+    deb: https://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_18.04/amd64/albert_0.14.22_amd64.deb

@@ -19,6 +19,6 @@
     - { role: rambox, tags: "rambox" }
     - { role: stow, tags: "stow" }
     - { role: configuration, tags: "configuration" }
-    - { role: ulauncher, tags: "ulauncher" }
+    - { role: albert, tags: "albert" }
     - { role: gnome, tags: "gnome" }
     - { role: xps, tags: "xps" }
