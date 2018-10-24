@@ -5,7 +5,7 @@
 
 - name: Install power management tools
   pacman:
-    name: [thermald, tlp, tlp-rdw, powertop, lm-sensors, psensor]
+    name: [thermald, tlp, tlp-rdw, powertop, lm_sensors, psensor]
 
 - name: Get NVIDIA card id
   shell: lspci | awk '/.*NVIDIA.*/ {print $1}'
@@ -69,20 +69,27 @@
     create: yes
     backup: yes
 
+- name: Add i915 module
+  lineinfile:
+    path: /etc/mkinitcpio.conf
+    regexp: '^MODULES=.*$'
+    line: 'MODULES=(i915)'
+    backup: yes
+
+- name: Regenerate initramfs
+  shell: mkinitcpio -c /etc/mkinitcpio.conf -g /boot/initramfs-linux.img
+
 - name: Tweak grub default
   lineinfile:
     path: /etc/default/grub
     regexp: '^(GRUB_CMDLINE_LINUX_DEFAULT)=.*$'
-    line: '\1=quiet acpi_rev_override=1 acpi_osi=Linux scsi_mod.use_blk_mq=1 nouveau.modeset=0 nouveau.runpm=0 mem_sleep_default=deep pcie_port_pm=on'
+    line: '\1="quiet acpi_rev_override=1 acpi_osi=Linux scsi_mod.use_blk_mq=1 nouveau.modeset=0 nouveau.runpm=0 mem_sleep_default=deep pcie_port_pm=on"'
     backrefs: yes
     backup: yes
 
 - name: Update grub
-  shell: update-grub
+  shell: grub-mkconfig -o /boot/grub/grub.cfg
 
 - name: Install nVidia drivers
   pacman:
     name: nvidia
-
-- name: Switch to intel card
-  shell: prime-select intel 2>/dev/null
