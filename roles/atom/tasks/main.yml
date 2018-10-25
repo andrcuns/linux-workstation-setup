@@ -7,7 +7,7 @@
     classic: yes
 
 - name: Install Atom packages
-  shell: "apm install {{ item }}"
+  shell: "/snap/bin/apm install {{ item }}"
   with_items:
     - sort-lines
     - atom-terminal

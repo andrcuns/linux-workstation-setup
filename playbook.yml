@@ -20,5 +20,5 @@
     - { role: stow, tags: "stow" }
     - { role: configuration, tags: "configuration" }
     - { role: albert, tags: "albert" }
-    - { role: gnome, tags: "gnome" }
+    # - { role: gnome, tags: "gnome" }
     - { role: xps, tags: "xps" }

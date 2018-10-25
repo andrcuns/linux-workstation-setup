@@ -6,7 +6,7 @@
     classic: yes
 
 - name: Install extensions
-  shell: "code --install-extension {{ item }}"
+  shell: "/snap/bin/code --install-extension {{ item }}"
   with_items:
     - alexkrechik.cucumberautocomplete
     - codezombiech.gitignore
