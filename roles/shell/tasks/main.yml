@@ -44,6 +44,13 @@
     - { src: '{{ omzsh_themes_dir }}/pure/pure.zsh' , dest: '{{ omzsh_themes_dir }}/pure.zsh-theme' }
   become: no
 
+- name: Clone base16-shell theme
+  git:
+    repo: https://github.com/chriskempson/base16-shell.git
+    dest: "{{ user.home }}/.config/base16-shell"
+    accept_hostkey: yes
+  become: no
+
 - name: Check for original .zshrc
   stat:
     path: "{{ user.home }}/.zshrc"

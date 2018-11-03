@@ -22,7 +22,7 @@
     name: [
       jq,
       httpie,
-      guake,
+      tilda,
       htop,
       cifs-utils,
       samba,
