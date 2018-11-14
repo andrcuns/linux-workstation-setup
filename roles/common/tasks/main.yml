@@ -19,7 +19,6 @@
       expect,
       python,
       python-pip,
-      ruby,
       snapd
     ]
 
