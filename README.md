@@ -1,7 +1,9 @@
-ARCH SETUP
+WORKSTATION SETUP
 ===========
 ![](ansible.png)   
-arch-setup is a small project based on ansible to automate software installation for fresh Arch linux based install.
+linux-workstation-setup is a small project based on ansible to automate software installation for fresh linux install.   
+[arch-distros](https://github.com/andrcuns/linux-workstation-setup) - branch for arch based linux distributions using pacman package manager and aur software.   
+[ubuntu-distros](https://github.com/andrcuns/linux-workstation-setup/tree/ubuntu-distros) - branch for ubuntu based distros using apt package manager and snaps.   
 
 Usage
 -----
