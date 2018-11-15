@@ -11,3 +11,13 @@
   args:
     creates: "{{ user.home }}/.rvm"
     warn: false
+
+- name: Install ruby gems
+  gem:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - fastri
+    - rcodetools
+    - rdoc
+    - rubocop
