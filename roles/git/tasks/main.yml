@@ -4,6 +4,14 @@
   apt:
     name: git
 
+- name: Add lazygit ppa
+  apt_repository:
+    repo: ppa:lazygit-team/daily
+
+- name: Install lazygit
+  apt:
+    name: lazygit
+    
 - name: Install diff-so-fancy
   yarn:
     name: diff-so-fancy
