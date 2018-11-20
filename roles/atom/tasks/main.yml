@@ -1,13 +1,20 @@
 ---
 
+- name: Add atom key
+  apt_key:
+    url: https://packagecloud.io/AtomEditor/atom/gpgkey
+
+- name: Add atom ppa
+  apt_repository:
+    repo: deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main
+
 - name: Install Atom
-  snap:
+  apt:
     name: atom
-    state: present
-    classic: yes
+    state: latest
 
 - name: Install Atom packages
-  shell: "/snap/bin/apm install {{ item }}"
+  shell: "apm install {{ item }}"
   with_items:
     - sort-lines
     - atom-terminal

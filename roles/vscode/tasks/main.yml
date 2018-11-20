@@ -1,12 +1,19 @@
 ---
 
+- name: Add vscode key
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+
+- name: Add vscode ppa
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+
 - name: Install Visual Studio Code
-  snap:
-    name: vscode
-    classic: yes
+  apt:
+    name: [apt-transport-https, code]
 
 - name: Install extensions
-  shell: "/snap/bin/code --install-extension {{ item }}"
+  shell: "code --install-extension {{ item }}"
   with_items:
     - alexkrechik.cucumberautocomplete
     - codezombiech.gitignore

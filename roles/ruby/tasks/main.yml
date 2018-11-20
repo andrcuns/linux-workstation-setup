@@ -9,13 +9,11 @@
 - name: Installing ruby version manager
   shell: "curl -sSL https://get.rvm.io | bash -s stable --ruby --ignore-dotfiles"
   args:
-    creates: "{{ user.home }}/.rvm"
+    creates: "{{ rvm_home }}"
     warn: false
 
 - name: Install ruby gems
-  gem:
-    name: "{{ item }}"
-    state: latest
+  shell: "{{ init_rvm }} && gem install {{ item }}"
   with_items:
     - fastri
     - rcodetools

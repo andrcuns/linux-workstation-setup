@@ -7,9 +7,10 @@ ubuntu_codename: "{{ lookup('pipe','. /etc/os-release && echo $UBUNTU_CODENAME')
 github: "https://github.com/"
 dotfiles: "{{ user.home }}/.dotfiles"
 
-source_shell: "[ $(echo $0) = '-zsh' ] && source {{ user.home }}/.zshrc || source {{ user.home }}/.bashrc"
-
 # Deb versions
 albert_version: 0.14.22
 bat_version: 0.8.0
 rambox_version: 0.6.1
+slack_version: 3.3.3
+jetbrains_toolbox_version: 1.12.4481
+wifi_driver_version: 1.176

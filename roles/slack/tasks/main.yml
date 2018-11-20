@@ -1,6 +1,5 @@
 ---
 
 - name: Install slack desktop
-  snap:
-    name: slack
-    classic: yes
+  apt:
+    deb: "https://downloads.slack-edge.com/linux_releases/slack-desktop-{{ slack_version }}-amd64.deb"

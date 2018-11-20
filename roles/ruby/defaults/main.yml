@@ -1,0 +1,2 @@
+rvm_home: "{{ user.home }}/.rvm"
+init_rvm: "source {{ rvm_home }}/scripts/rvm"

@@ -28,7 +28,7 @@
 
 - name: Install wifi driver
   apt:
-    deb: http://mirrors.edge.kernel.org/ubuntu/pool/main/l/linux-firmware/linux-firmware_1.175_all.deb
+    deb: http://mirrors.edge.kernel.org/ubuntu/pool/main/l/linux-firmware/linux-firmware_{{ wifi_driver_version }}_all.deb
 
 - name: Load wifi drivers
   shell: modprobe -r ath10k_pci && modprobe ath10k_pci

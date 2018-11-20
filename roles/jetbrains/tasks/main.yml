@@ -1,0 +1,7 @@
+---
+
+- name: Install jetbrains toolbox
+  unarchive:
+    src: https://download.jetbrains.com/toolbox/jetbrains-toolbox-{{ jetbrains_toolbox_version }}.tar.gz
+    dest: /usr/bin
+    remote_src: yes

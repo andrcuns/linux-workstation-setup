@@ -10,9 +10,9 @@
     - { role: ruby, tags: "ruby", become: no }
     - { role: git, tags: "git" }
     - { role: docker, tags: "docker" }
-    - { role: pass, tags: "pass" }
+    # - { role: pass, tags: "pass" }
     - { role: vscode, tags: "vscode" }
-    - { role: idea, tags: "idea" }
+    - { role: jetbrains, tags: "jetbrains" }
     - { role: atom, tags: "atom" }
     - { role: neovim, tags: "neovim" }
     - { role: spotify, tags: "spotify" }
@@ -21,5 +21,5 @@
     - { role: stow, tags: "stow" }
     - { role: configuration, tags: "configuration" }
     - { role: albert, tags: "albert" }
-    # - { role: gnome, tags: "gnome" }
+    - { role: gnome, tags: "gnome" }
     - { role: xps, tags: "xps" }
