@@ -12,7 +12,7 @@
     - { role: docker, tags: "docker" }
     - { role: pass, tags: "pass" }
     - { role: vscode, tags: "vscode" }
-    - { role: idea, tags: "idea" }
+    - { role: jetbrains, tags: "jetbrains" }
     - { role: atom, tags: "atom" }
     - { role: neovim, tags: "neovim" }
     - { role: chrome, tags: "chrome" }
