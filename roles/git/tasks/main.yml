@@ -5,6 +5,11 @@
     name: git
     state: latest
 
+- name: Install lazygit
+  aur:
+    name: lazygit
+    user: "{{ user.name }}"
+
 - name: Install diff-so-fancy
   yarn:
     name: diff-so-fancy
