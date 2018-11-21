@@ -12,6 +12,9 @@
     creates: "{{ user.home }}/.rvm"
     warn: false
 
+- name: Generate ruby docs
+  shell: "{{ init_rvm }} && rvm docs generate-ri"
+
 - name: Install ruby gems
   gem:
     name: "{{ item }}"
