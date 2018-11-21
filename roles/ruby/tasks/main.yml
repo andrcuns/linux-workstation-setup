@@ -16,6 +16,6 @@
   shell: "{{ init_rvm }} && gem install {{ item }}"
   with_items:
     - fastri
-    - rcodetools
+    - solargraph
     - rdoc
     - rubocop
