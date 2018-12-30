@@ -1,26 +1,27 @@
 ---
 
-- name: Add public keys
-  shell: |
-    gpg \
-    --keyserver hkp://keys.gnupg.net \
-    --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-
-- name: Installing ruby version manager
-  shell: "curl -sSL https://get.rvm.io | bash -s stable --ruby --ignore-dotfiles"
+- name: Installing rbenv
+  shell: "curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-installer | bash"
   args:
-    creates: "{{ user.home }}/.rvm"
+    creates: "{{ rbenv_home }}"
     warn: false
 
-- name: Generate ruby docs
-  shell: "{{ init_rvm }} && rvm docs generate-ri"
+- name: Init rbenv
+  shell: rbenv init -
 
-- name: Install ruby gems
-  gem:
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - fastri
-    - solargraph
-    - rdoc
-    - rubocop
+- name: Install rbenv default gems plugin
+  git:
+    repo: "{{ github }}rbenv/rbenv-default-gems.git"
+    dest: "{{ rbenv_home }}/plugins/rbenv-default-gems"
+    accept_hostkey: yes
+
+- name: Add default gems
+  template:
+    src: default-gems.j2
+    dest: "{{ rbenv_home }}/default-gems"
+
+- name: "Install ruby {{ ruby_version }}"
+  shell: "rbenv install {{ ruby_version }}"
+
+- name: "Set ruby {{ ruby_version }} as global"
+  shell: "rbenv global {{ ruby_version }}"
