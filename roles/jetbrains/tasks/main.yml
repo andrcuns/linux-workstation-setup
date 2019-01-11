@@ -4,3 +4,4 @@
   aur:
     name: jetbrains-toolbox
     user: "{{ user.name }}"
+    dir: "{{ aur_dir }}"

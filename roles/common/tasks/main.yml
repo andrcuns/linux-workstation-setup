@@ -9,8 +9,6 @@
   pacman:
     name: [
       base-devel,
-      expect,
-      go,
       python,
       python-pip
     ]
@@ -29,25 +27,21 @@
       ecryptfs-utils,
       bat,
       ncdu,
-      gpaste
     ]
     state: latest
 
 - name: Create AUR directory
   file:
-    path: "/home/{{ user.name }}/aur"
+    path: "{{ aur_dir }}"
     state: directory
   become: no
-  tags:
-    - aur
 
 - name: Install additional aur software
   aur:
     name: "{{ item }}"
     user: "{{ user.name }}"
+    dir: "{{ aur_dir }}"
   with_items:
     - direnv
     - prettyping
     - albert
-  tags:
-    - aur

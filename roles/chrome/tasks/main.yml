@@ -4,5 +4,4 @@
   aur:
     name: google-chrome
     user: "{{ user.name }}"
-  tags:
-    - aur
+    dir: "{{ aur_dir }}"

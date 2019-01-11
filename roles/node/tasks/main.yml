@@ -13,7 +13,6 @@
     chdir: "{{ nvm_home }}"
   become: no
 
-
 - name: Install latest node version
   shell: "{{ init_nvm }} && nvm install node"
   register: nvm_result
@@ -34,3 +33,5 @@
     - nodemon
     - tslint
     - eslint
+    - typescript
+  become: no

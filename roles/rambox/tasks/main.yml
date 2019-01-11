@@ -4,5 +4,4 @@
   aur:
     name: rambox-bin
     user: "{{ user.name }}"
-  tags:
-    - aur
+    dir: "{{ aur_dir }}"

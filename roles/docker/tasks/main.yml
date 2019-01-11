@@ -11,12 +11,7 @@
     groups: docker
     append: yes
 
-- name: Update ufw to allow forwarding
-  lineinfile:
-    dest: /etc/default/ufw
-    regexp: DEFAULT_FORWARD_POLICY=
-    line: DEFAULT_FORWARD_POLICY="ACCEPT"
-
-- name: Reload ufw
-  ufw:
-    state: reloaded
+- name: Enable docker
+  systemd:
+    name: docker
+    enabled: yes

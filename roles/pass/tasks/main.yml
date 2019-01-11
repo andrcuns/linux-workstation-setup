@@ -1,7 +1,10 @@
 ---
 
-- name: Install CLI password manager
-  pacman:
-    name: pass
-    state: latest
-
+- name: Install bitwarden
+  aur:
+    name: "{{ item }}"
+    user: "{{ user.name }}"
+    dir: "{{ aur_dir }}"
+  with_items:
+    - bitwarden-bin
+    - bitwarden-cli

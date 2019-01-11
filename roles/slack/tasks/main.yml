@@ -4,5 +4,4 @@
   aur:
     name: slack-desktop
     user: "{{ user.name }}"
-  tags:
-    - aur
+    dir: "{{ aur_dir }}"

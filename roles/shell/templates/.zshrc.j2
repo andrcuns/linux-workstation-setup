@@ -22,7 +22,7 @@ else
 fi
 
 # Add rbenv, bin folder to path
-export PATH=$HOME/.rbenv/bin:$PATH:$HOME/bin
+export PATH=$PATH:$HOME/bin
 
 # Direnv integration¬
 eval "$(direnv hook zsh)"
@@ -49,7 +49,7 @@ ZSH_THEME="pure"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Plugin declaration
-plugins=(sudo git adb colorize cp docker zsh-syntax-highlighting zsh-autosuggestions zsh-completions gradle pass zsh-nvm yarn gem rbenv)
+plugins=(sudo git colorize cp docker zsh-syntax-highlighting zsh-autosuggestions zsh-completions gradle zsh-nvm npm yarn gem rbenv)
 
 # Oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -76,6 +76,13 @@ alias ping='prettyping --nolegend'
 alias help='tldr'
 alias q='exit'
 alias fsize='ncdu --color dark -x --exclude .git --exclude node_modules'
+alias lg='lazygit'
+
+# Package manager
+alias pinstall='sudo pacman -S'
+alias premove='sudo pacman -Rns'
+alias pfind='sudo pacman -Ss'
+alias update='sudo pacman -Syyu && pamac upgrade -a'
 
 # =====================================================================================================================
 # SDKMAN

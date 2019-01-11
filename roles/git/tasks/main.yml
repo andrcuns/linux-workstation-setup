@@ -9,9 +9,11 @@
   aur:
     name: lazygit
     user: "{{ user.name }}"
+    dir: "{{ aur_dir }}"
 
 - name: Install diff-so-fancy
   yarn:
     name: diff-so-fancy
     global: yes
     state: latest
+  become: no
