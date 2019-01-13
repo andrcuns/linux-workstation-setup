@@ -15,3 +15,20 @@
   systemd:
     name: docker
     enabled: yes
+
+- name: Install pass
+  pacman:
+    name: pass
+    state: latest
+
+- name: Add docker credentials helper
+  unarchive:
+    src: "{{ github }}/docker/docker-credential-helpers/releases/download/v0.6.0/docker-credential-pass-v0.6.0-amd64.tar.gz"
+    dest: /usr/local/bin
+    remote_src: yes
+
+- name: Add docker config file
+  template:
+    src: config.json.j2
+    dest: "{{ user.home }}/.docker"
+  become: no

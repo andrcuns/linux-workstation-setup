@@ -3,5 +3,6 @@
 - name: Install Google Chrome
   aur:
     name: google-chrome
-    user: "{{ user.name }}"
-    dir: "{{ aur_dir }}"
+    use: makepkg
+    skip_installed: yes
+  become: no

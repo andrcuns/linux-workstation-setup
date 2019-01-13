@@ -3,5 +3,6 @@
 - name: Install slack desktop
   aur:
     name: slack-desktop
-    user: "{{ user.name }}"
-    dir: "{{ aur_dir }}"
+    use: makepkg
+    skip_installed: yes
+  become: no

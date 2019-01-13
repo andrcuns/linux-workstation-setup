@@ -21,8 +21,8 @@ else
   export EDITOR='nvim'
 fi
 
-# Add rbenv, bin folder to path
-export PATH=$PATH:$HOME/bin
+# Add custom executables to path
+export PATH="$PATH:$(yarn global bin):$HOME/bin"
 
 # Direnv integration¬
 eval "$(direnv hook zsh)"
@@ -82,7 +82,7 @@ alias lg='lazygit'
 alias pinstall='sudo pacman -S'
 alias premove='sudo pacman -Rns'
 alias pfind='sudo pacman -Ss'
-alias update='sudo pacman -Syyu && pamac upgrade -a'
+alias update='sudo pacman -Syyu'
 
 # =====================================================================================================================
 # SDKMAN

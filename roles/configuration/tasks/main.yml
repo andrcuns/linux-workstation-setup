@@ -1,5 +1,11 @@
 ---
 
+- name: Create bin folder in user home
+  file:
+    path: "{{ user.home }}/bin"
+    state: directory
+  become: no
+
 - name: Sudo without password
   lineinfile:
     dest: /etc/sudoers

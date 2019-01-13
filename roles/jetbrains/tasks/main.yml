@@ -3,5 +3,6 @@
 - name: Install JetBrains toolbox
   aur:
     name: jetbrains-toolbox
-    user: "{{ user.name }}"
-    dir: "{{ aur_dir }}"
+    use: makepkg
+    skip_installed: yes
+  become: no

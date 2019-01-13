@@ -2,7 +2,7 @@
 
 - name: Clone node version manager
   git:
-    repo: "{{ github }}creationix/nvm.git"
+    repo: "{{ github }}/creationix/nvm.git"
     dest: "{{ nvm_home }}"
     accept_hostkey: yes
   become: no

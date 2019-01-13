@@ -5,43 +5,39 @@
     update_cache: yes
     upgrade: yes
 
-- name: Install essential libs
+- name: Install dev dependencies
   pacman:
-    name: [
-      base-devel,
-      python,
-      python-pip
-    ]
+    name:
+      - git
+      - base-devel
+      - python
     state: latest
 
-- name: Install common software
+- name: Install various tools
   pacman:
-    name: [
-      jq,
-      httpie,
-      tilda,
-      htop,
-      cifs-utils,
-      samba,
-      ufw,
-      ecryptfs-utils,
-      bat,
-      ncdu,
-    ]
+    name:
+      - jq
+      - httpie
+      - guake
+      - htop
+      - cifs-utils
+      - ufw
+      - ecryptfs-utils
+      - bat
+      - ncdu
+      - tldr
+      - python-pip
+      - expect
+      - openvpn
+      - networkmanager-openvpn
+      - prettyping
     state: latest
-
-- name: Create AUR directory
-  file:
-    path: "{{ aur_dir }}"
-    state: directory
-  become: no
 
 - name: Install additional aur software
   aur:
-    name: "{{ item }}"
-    user: "{{ user.name }}"
-    dir: "{{ aur_dir }}"
-  with_items:
-    - direnv
-    - prettyping
-    - albert
+    name:
+      - direnv
+      - albert
+    use: makepkg
+    skip_installed: yes
+  become: no

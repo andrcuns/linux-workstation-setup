@@ -2,9 +2,7 @@
 
 - name: Install bitwarden
   aur:
-    name: "{{ item }}"
-    user: "{{ user.name }}"
-    dir: "{{ aur_dir }}"
-  with_items:
-    - bitwarden-bin
-    - bitwarden-cli
+    name: [bitwarden-bin, bitwarden-cli]
+    use: makepkg
+    skip_installed: yes
+  become: no

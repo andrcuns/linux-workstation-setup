@@ -1,10 +1,8 @@
 ---
+
 user:
   name: "{{ lookup('env', 'USER') }}"
   home: "{{ lookup('env', 'HOME') }}"
 
-github: "https://github.com/"
+github: "https://github.com"
 dotfiles: "{{ user.home }}/.dotfiles"
-aur_dir: "{{ user.home }}/.aur"
-
-source_shell: "[ $(echo $0) = '-zsh' ] && source {{ user.home }}/.zshrc || source {{ user.home }}/.bashrc"

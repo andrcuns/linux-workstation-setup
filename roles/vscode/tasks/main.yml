@@ -3,8 +3,9 @@
 - name: Install Visual Studio Code
   aur:
     name: visual-studio-code-bin
-    user: "{{ user.name }}"
-    dir: "{{ aur_dir }}"
+    use: makepkg
+    skip_installed: yes
+  become: no
 
 - name: Install extensions
   shell: "code --install-extension {{ item }}"
