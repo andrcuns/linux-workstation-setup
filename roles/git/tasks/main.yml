@@ -7,7 +7,7 @@
 
 - name: Install lazygit
   aur:
-    name: lazygit
+    name: lazygit-git
     use: makepkg
     skip_installed: yes
   become: no

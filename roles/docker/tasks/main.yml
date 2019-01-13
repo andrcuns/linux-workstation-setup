@@ -26,9 +26,16 @@
     src: "{{ github }}/docker/docker-credential-helpers/releases/download/v0.6.0/docker-credential-pass-v0.6.0-amd64.tar.gz"
     dest: /usr/local/bin
     remote_src: yes
+    creates: /usr/local/bin/docker-credential-pass
+
+- name: Create docker settings folder
+  file:
+    path: "{{ user.home }}/.docker"
+    state: directory
+  become: no
 
 - name: Add docker config file
   template:
     src: config.json.j2
-    dest: "{{ user.home }}/.docker"
+    dest: "{{ user.home }}/.docker/config.json"
   become: no
