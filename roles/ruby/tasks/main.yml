@@ -1,6 +1,6 @@
 ---
 
-- name: Install build dependencies
+- name: Install ruby build dependencies
   apt:
     name:
       - libssl-dev

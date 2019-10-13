@@ -13,4 +13,4 @@ rambox_version: 0.6.9
 slack_version: 4.1.1
 jetbrains_toolbox_version: 1.15.5796
 wifi_driver_version: 1.176
-docker_cred_helper_version: "v0.63.0"
+docker_cred_helper_version: "v0.6.3"
