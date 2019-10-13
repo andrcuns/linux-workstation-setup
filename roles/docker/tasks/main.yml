@@ -10,12 +10,23 @@
     groups: docker
     append: yes
 
-- name: Update ufw to allow forwarding
-  lineinfile:
-    dest: /etc/default/ufw
-    regexp: DEFAULT_FORWARD_POLICY=
-    line: DEFAULT_FORWARD_POLICY="ACCEPT"
+- name: Installing lazydocker
+  shell: "curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash"
+  args:
+    warn: false
 
-- name: Reload ufw
-  ufw:
-    state: reloaded
+- name: Install CLI password manager
+  apt:
+    name: pass
+
+- name: Add docker credentials helper
+  unarchive:
+    src: "{{ github }}/docker/docker-credential-helpers/releases/download/{{ docker_cred_helper_version }}/docker-credential-pass-{{ docker_cred_helper_version }}-amd64.tar.gz"
+    dest: /usr/local/bin
+    remote_src: yes
+
+- name: Add docker config file
+  template:
+    src: config.json.j2
+    dest: "{{ user.home }}/.docker"
+  become: no

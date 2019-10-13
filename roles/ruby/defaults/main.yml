@@ -1,2 +1,3 @@
 rbenv_home: "{{ user.home }}/.rbenv"
-ruby_version: "2.6.0"
+rbenv_exec: "{{ rbenv_home }}/bin/rbenv"
+ruby_version: "2.6.3"

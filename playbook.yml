@@ -5,12 +5,12 @@
   roles:
     - { role: common, tags: "common" }
     - { role: node, tags: "node" }
-    - { role: shell, tags: "shell" }
+    - { role: zshell, tags: "zshell", become: no }
     - { role: sdks, tags: "sdks", become: no }
     - { role: ruby, tags: "ruby", become: no }
     - { role: git, tags: "git" }
     - { role: docker, tags: "docker" }
-    # - { role: pass, tags: "pass" }
+    - { role: pass, tags: "pass" }
     - { role: vscode, tags: "vscode" }
     - { role: jetbrains, tags: "jetbrains" }
     - { role: atom, tags: "atom" }
@@ -22,4 +22,4 @@
     - { role: configuration, tags: "configuration" }
     - { role: albert, tags: "albert" }
     - { role: gnome, tags: "gnome" }
-    - { role: xps, tags: "xps" }
+    # - { role: xps, tags: "xps" }
