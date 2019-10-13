@@ -11,13 +11,16 @@
     dest: "{{ omzsh_dir }}"
     accept_hostkey: yes
 
+- name: Check if omzsh is installed
+  stat:
+    path: "{{ omzsh_dir }}"
+  register: omzsh
+
 - name: Install oh-my-zsh
   shell: "{{ omzsh_dir }}/tools/install.sh"
-  register: result
-  changed_when: "'You already have Oh My Zsh installed' not in result.stdout"
-  ignore_errors: yes
+  when: not omzsh.stat.exists
 
-- name: Cloninig custom plugins
+- name: Cloning custom plugins
   git:
     repo: "https://github.com/{{ item.value }}/{{ item.key }}.git"
     dest: "{{ omzsh_plugins_dir }}/{{ item.key }}"

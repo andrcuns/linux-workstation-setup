@@ -1,5 +1,13 @@
 ---
 
+- name: Install build dependencies
+  apt:
+    name:
+      - libssl-dev
+      - libreadline-dev
+      - zlib1g-dev
+  become: yes
+
 - name: Install rbenv
   git:
     repo: https://github.com/rbenv/rbenv.git
