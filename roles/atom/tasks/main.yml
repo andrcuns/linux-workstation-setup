@@ -12,14 +12,3 @@
   apt:
     name: atom
     state: latest
-
-- name: Install Atom packages
-  shell: "apm install {{ item }}"
-  with_items:
-    - sort-lines
-    - atom-terminal
-    - terminal-plus
-    - editorconfig
-    - git-log
-    - git-control
-  become: no
