@@ -21,4 +21,5 @@
     - { role: configuration, tags: "configuration" }
     - { role: albert, tags: "albert" }
     - { role: gnome, tags: "gnome" }
+    - { role: chrome, tags: "chrome" }
     # - { role: xps, tags: "xps" }
