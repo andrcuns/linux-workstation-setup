@@ -8,13 +8,13 @@
 
 - name: Install rbenv build plugin
   git:
-    repo: "{{ github }}/rbenv/ruby-build.git"
+    repo: "https://github.com/rbenv/ruby-build.git"
     dest: "{{ rbenv_home }}/plugins/ruby-build"
     accept_hostkey: yes
 
 - name: Install rbenv default gems plugin
   git:
-    repo: "{{ github }}/rbenv/rbenv-default-gems.git"
+    repo: "https://github.com/rbenv/rbenv-default-gems.git"
     dest: "{{ rbenv_home }}/plugins/rbenv-default-gems"
     accept_hostkey: yes
 

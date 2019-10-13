@@ -4,7 +4,6 @@ user:
   home: "{{ lookup('env', 'HOME') }}"
 ubuntu_codename: "{{ lookup('pipe','. /etc/os-release && echo $UBUNTU_CODENAME')}}"
 
-github: "https://github.com/"
 dotfiles: "{{ user.home }}/.dotfiles"
 
 # Deb versions

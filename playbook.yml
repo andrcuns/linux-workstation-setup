@@ -10,7 +10,6 @@
     - { role: ruby, tags: "ruby", become: no }
     - { role: git, tags: "git" }
     - { role: docker, tags: "docker" }
-    - { role: pass, tags: "pass" }
     - { role: vscode, tags: "vscode" }
     - { role: jetbrains, tags: "jetbrains" }
     - { role: atom, tags: "atom" }

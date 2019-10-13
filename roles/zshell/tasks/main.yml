@@ -7,7 +7,7 @@
 
 - name: Clone oh-my-zsh
   git:
-    repo: "{{ github }}robbyrussell/oh-my-zsh.git"
+    repo: "https://github.com/robbyrussell/oh-my-zsh.git"
     dest: "{{ omzsh_dir }}"
     accept_hostkey: yes
 
@@ -19,7 +19,7 @@
 
 - name: Cloninig custom plugins
   git:
-    repo: "{{ github }}{{ item.value }}/{{ item.key }}.git"
+    repo: "https://github.com/{{ item.value }}/{{ item.key }}.git"
     dest: "{{ omzsh_plugins_dir }}/{{ item.key }}"
     accept_hostkey: yes
   with_dict:
@@ -27,7 +27,7 @@
 
 - name: Clone pure theme
   git:
-    repo: "{{ github }}sindresorhus/pure.git"
+    repo: "https://github.com/sindresorhus/pure.git"
     dest: "{{ omzsh_themes_dir }}/pure"
     accept_hostkey: yes
 
@@ -64,7 +64,7 @@
 
 - name: Clone base16 shell themes
   git:
-    repo: "{{ github }}chriskempson/base16-shell.git"
+    repo: "https://github.com/chriskempson/base16-shell.git"
     dest: "{{ user.home }}/.config/base16-shell"
     accept_hostkey: yes
   

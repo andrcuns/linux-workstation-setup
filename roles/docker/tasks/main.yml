@@ -21,7 +21,7 @@
 
 - name: Add docker credentials helper
   unarchive:
-    src: "{{ github }}/docker/docker-credential-helpers/releases/download/{{ docker_cred_helper_version }}/docker-credential-pass-{{ docker_cred_helper_version }}-amd64.tar.gz"
+    src: "https://github.com/docker/docker-credential-helpers/releases/download/{{ docker_cred_helper_version }}/docker-credential-pass-{{ docker_cred_helper_version }}-amd64.tar.gz"
     dest: /usr/local/bin
     remote_src: yes
 
