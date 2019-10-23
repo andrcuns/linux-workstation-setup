@@ -6,7 +6,7 @@
 
 - name: Add lazygit ppa
   apt_repository:
-    repo: ppa:lazygit-team/daily
+    repo: ppa:lazygit-team/release
 
 - name: Install lazygit
   apt:

@@ -1,5 +1,0 @@
----
-
-- name: Install CLI password manager
-  apt:
-    name: pass

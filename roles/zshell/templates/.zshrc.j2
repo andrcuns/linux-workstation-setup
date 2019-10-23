@@ -21,15 +21,11 @@ else
   export EDITOR='nvim'
 fi
 
-# Add rbenv, bin folder to path
-export PATH=$HOME/.rbenv/bin:$PATH:$HOME/bin
+# Add bin to path
+export PATH="$PATH:$HOME/bin"
 
 # Direnv integration¬
 eval "$(direnv hook zsh)"
-
-# Custom zsh-nvm options
-export NVM_LAZY_LOAD=true
-export NVM_AUTO_USE=true
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -49,13 +45,31 @@ ZSH_THEME="pure"
 # Disable marking repo as dirty due to untracked files
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Plugin declaration
-plugins=(sudo git adb colorize cp docker zsh-syntax-highlighting zsh-autosuggestions zsh-completions gradle pass zsh-nvm yarn gem rbenv)
+# =====================================================================================================================
+# Plugins
+# =====================================================================================================================
+# OS
+plugins=(sudo)
 
+# TERMINAL
+plugins+=(zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
+
+# VM
+plugins+=(docker kubectl kops aws)
+
+# DEV
+plugins+=(git gradle zsh-nvm npm yarn gem rbenv pyenv)
+
+# =====================================================================================================================
+# Sourcing
+# =====================================================================================================================
 # Oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 source $ZSH/custom/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
+# =====================================================================================================================
+# Plugin bindings
+# =====================================================================================================================
 # History substring search plugin binding
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -68,9 +82,8 @@ ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(history-substring-search-up history-substring-se
 # Additional aliases
 # =====================================================================================================================
 alias vim='nvim'
-alias gbd='g push origin --delete $(git_current_branch)'
+alias gbd='git push origin --delete $(git_current_branch)'
 alias gcleanup=$'git fetch -p && git branch -v | grep \'gone\' | awk \'{print $1}\' | xargs -n 1 git branch -D'
-alias lg='lazygit'
 alias dockerstopall='docker stop $(docker ps -a -q)'
 alias dockerrmall='docker rm $(docker ps -a -q)'
 alias cat='bat'
@@ -78,6 +91,8 @@ alias ping='prettyping --nolegend'
 alias help='tldr'
 alias q='exit'
 alias fsize='ncdu --color dark -x --exclude .git --exclude node_modules'
+alias lg='lazygit'
+alias ld='lazydocker'
 
 # =====================================================================================================================
 # SDKMAN

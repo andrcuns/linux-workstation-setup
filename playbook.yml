@@ -1,25 +1,35 @@
 ---
-
 - hosts: localhost
   become: yes
   roles:
+    # General
     - { role: common, tags: "common" }
-    - { role: node, tags: "node" }
-    - { role: shell, tags: "shell" }
+    - { role: git, tags: "git" }
+    - { role: zshell, tags: "zshell", become: no }
+    - { role: docker, tags: "docker" }
+    - { role: configuration, tags: "configuration" }
+
+    # Programming languages
     - { role: sdks, tags: "sdks", become: no }
     - { role: ruby, tags: "ruby", become: no }
-    - { role: git, tags: "git" }
-    - { role: docker, tags: "docker" }
-    # - { role: pass, tags: "pass" }
-    - { role: vscode, tags: "vscode" }
-    - { role: jetbrains, tags: "jetbrains" }
+    - { role: node, tags: "node" }
+
+    # Editors
     - { role: atom, tags: "atom" }
     - { role: neovim, tags: "neovim" }
+    - { role: jetbrains, tags: "jetbrains" }
+    - { role: vscode, tags: "vscode" }
+
+    # Desktop
+    - { role: albert, tags: "albert" }
+    - { role: chrome, tags: "chrome" }
+    - { role: gnome, tags: "gnome" }
     - { role: spotify, tags: "spotify" }
     - { role: slack, tags: "slack" }
     - { role: rambox, tags: "rambox" }
+
+    # Dotfiles
     - { role: stow, tags: "stow" }
-    - { role: configuration, tags: "configuration" }
-    - { role: albert, tags: "albert" }
-    - { role: gnome, tags: "gnome" }
-    - { role: xps, tags: "xps" }
+
+    # Laptop
+    # - { role: xps, tags: "xps" }

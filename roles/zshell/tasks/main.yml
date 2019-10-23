@@ -3,35 +3,36 @@
 - name: Install zsh
   apt:
     name: zsh
+  become: yes
 
 - name: Clone oh-my-zsh
   git:
-    repo: "{{ github }}robbyrussell/oh-my-zsh.git"
+    repo: "https://github.com/robbyrussell/oh-my-zsh.git"
     dest: "{{ omzsh_dir }}"
     accept_hostkey: yes
-  become: no
+
+- name: Check if omzsh is installed
+  stat:
+    path: "{{ omzsh_dir }}"
+  register: omzsh
 
 - name: Install oh-my-zsh
   shell: "{{ omzsh_dir }}/tools/install.sh"
-  register: result
-  changed_when: "'You already have Oh My Zsh installed' not in result.stdout"
-  become: no
+  when: not omzsh.stat.exists
 
-- name: Cloninig custom plugins
+- name: Cloning custom plugins
   git:
-    repo: "{{ github }}{{ item.value }}/{{ item.key }}.git"
+    repo: "https://github.com/{{ item.value }}/{{ item.key }}.git"
     dest: "{{ omzsh_plugins_dir }}/{{ item.key }}"
     accept_hostkey: yes
   with_dict:
     "{{ omzsh_plugins }}"
-  become: no
 
 - name: Clone pure theme
   git:
-    repo: "{{ github }}sindresorhus/pure.git"
+    repo: "https://github.com/sindresorhus/pure.git"
     dest: "{{ omzsh_themes_dir }}/pure"
     accept_hostkey: yes
-  become: no
 
 - name: Symlink pure theme files
   file:
@@ -41,7 +42,6 @@
   with_items:
     - { src: '{{ omzsh_themes_dir }}/pure/async.zsh' , dest: '{{ omzsh_custom_dir }}/async.zsh' }
     - { src: '{{ omzsh_themes_dir }}/pure/pure.zsh' , dest: '{{ omzsh_themes_dir }}/pure.zsh-theme' }
-  become: no
 
 - name: Check for original .zshrc
   stat:
@@ -52,24 +52,22 @@
   command: mv ~/.zshrc ~/.zshrc.bak
   args:
     creates: ~/.zshrc.bak
-  become: no
   when: stat_zshrc.stat.exists
 
 - name: Create .zshrc from template
   template:
     src: .zshrc.j2
     dest: "{{ user.home }}/.zshrc"
-  become: no
 
 - name: Set zsh as default shell
   user:
     name: "{{ user.name }}"
     shell: /bin/zsh
+  become: yes
 
 - name: Clone base16 shell themes
   git:
-    repo: "{{ github }}chriskempson/base16-shell.git"
+    repo: "https://github.com/chriskempson/base16-shell.git"
     dest: "{{ user.home }}/.config/base16-shell"
     accept_hostkey: yes
-  become: no
   
