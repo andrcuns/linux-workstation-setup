@@ -11,9 +11,3 @@
 - name: Install lazygit
   apt:
     name: lazygit
-    
-- name: Install diff-so-fancy
-  yarn:
-    name: diff-so-fancy
-    global: yes
-    state: latest
