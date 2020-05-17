@@ -1,0 +1,12 @@
+---
+
+- name: Install pyenv
+  shell: "curl https://pyenv.run | bash"
+
+- name: "Install python {{ python_version }}"
+  shell: "{{ pyenv_exec }} install --skip-existing {{ python_version }}"
+
+- name: "Set global version to {{ python_version }}"
+  shell: "{{ pyenv_exec }} global {{ python_version }}"
+
+

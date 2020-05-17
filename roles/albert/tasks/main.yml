@@ -1,5 +1,0 @@
----
-
-- name: Install albert
-  apt:
-    deb: "https://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_19.04/amd64/albert_{{ albert_version }}_amd64.deb"

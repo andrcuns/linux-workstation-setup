@@ -15,9 +15,6 @@
   apt:
     name:
       - build-essential
-      - python
-      - python-pip
-      - snapd
 
 - name: Install various tools
   apt:
@@ -34,7 +31,5 @@
       - curl
       - wget
       - expect
-
-- name: Install bat
-  apt:
-    deb: "https://github.com/sharkdp/bat/releases/download/v{{ bat_version }}/bat_{{ bat_version }}_amd64.deb"
+      - bat
+      - xclip

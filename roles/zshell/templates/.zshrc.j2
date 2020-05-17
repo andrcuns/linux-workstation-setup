@@ -8,15 +8,8 @@ fi
 # =====================================================================================================================
 # Exports
 # =====================================================================================================================
-# GPG vars
-export LANG=en_US.UTF-8
-export GPG_TTY=$(tty)
-
 # Preferred editor
 export EDITOR='nvim'
-
-# Set custom PATH
-export PATH=$PATH:$HOME/bin
 
 # Direnv integration¬
 eval "$(direnv hook zsh)"
@@ -49,7 +42,7 @@ plugins=(sudo)
 plugins+=(zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
 
 # VM
-plugins+=(docker kubectl kops aws)
+plugins+=(docker kubectl aws)
 
 # DEV
 plugins+=(git gradle zsh-nvm npm yarn gem rbenv pyenv)
@@ -83,7 +76,7 @@ alias gbd='git push origin --delete $(git_current_branch)'
 alias gcleanup=$'git fetch -p && git branch -v | grep \'gone\' | awk \'{print $1}\' | xargs -n 1 git branch -D'
 alias dockerstopall='docker stop $(docker ps -a -q)'
 alias dockerrmall='docker rm $(docker ps -a -q)'
-alias cat='bat'
+alias cat='batcat'
 alias ping='prettyping --nolegend'
 alias help='tldr'
 alias q='exit'

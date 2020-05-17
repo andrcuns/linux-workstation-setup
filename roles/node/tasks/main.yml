@@ -13,8 +13,14 @@
     chdir: "{{ nvm_home }}"
   become: no
 
+- name: Add default packages
+  template:
+    src: default-packages.j2
+    dest: "{{ nvm_home }}/default-packages"
+  become: no
+
 - name: Install latest node version
-  shell: "{{ init_nvm }} && nvm install node"
+  shell: "{{ init_nvm }} && nvm install --lts --latest-npm"
   register: nvm_result
   changed_when: "'is already installed' not in nvm_result.stderr"
   become: no
@@ -35,13 +41,3 @@
 - name: Install yarn
   apt:
     name: yarn
-
-- name: Install latest global npm packages
-  yarn:
-    name: "{{ item }}"
-    global: yes
-    state: latest
-  with_items:
-    - nodemon
-    - tslint
-    - eslint

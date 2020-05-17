@@ -12,24 +12,16 @@
     # Programming languages
     - { role: sdks, tags: "sdks", become: no }
     - { role: ruby, tags: "ruby", become: no }
+    - { role: python, tags: "python", become: no }
     - { role: node, tags: "node" }
 
     # Editors
-    - { role: atom, tags: "atom" }
     - { role: neovim, tags: "neovim" }
-    - { role: jetbrains, tags: "jetbrains" }
     - { role: vscode, tags: "vscode" }
 
     # Desktop
-    - { role: albert, tags: "albert" }
-    - { role: chrome, tags: "chrome" }
     - { role: gnome, tags: "gnome" }
     - { role: spotify, tags: "spotify" }
-    - { role: slack, tags: "slack" }
-    - { role: rambox, tags: "rambox" }
 
     # Dotfiles
     - { role: stow, tags: "stow" }
-
-    # Laptop
-    # - { role: xps, tags: "xps" }
