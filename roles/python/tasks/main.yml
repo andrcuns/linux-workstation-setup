@@ -2,6 +2,8 @@
 
 - name: Install pyenv
   shell: "curl https://pyenv.run | bash"
+  args:
+    warn: false
 
 - name: "Install python {{ python_version }}"
   shell: "{{ pyenv_exec }} install --skip-existing {{ python_version }}"

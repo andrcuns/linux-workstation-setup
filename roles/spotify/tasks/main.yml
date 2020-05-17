@@ -1,6 +1,0 @@
----
-
-- name: Install spotify
-  snap:
-    name: spotify
-    classic: yes

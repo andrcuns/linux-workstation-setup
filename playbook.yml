@@ -21,7 +21,6 @@
 
     # Desktop
     - { role: gnome, tags: "gnome" }
-    - { role: spotify, tags: "spotify" }
 
     # Dotfiles
     - { role: stow, tags: "stow" }
