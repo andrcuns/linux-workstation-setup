@@ -1,9 +1,15 @@
 ---
+- name: Check if pyenv is installed
+  stat:
+    path: "{{ pyenv_home }}"
+  register: pyenv
 
 - name: Install pyenv
   shell: "curl https://pyenv.run | bash"
   args:
     warn: false
+    creates: "{{ pyenv_home }}"
+  when: not pyenv.stat.exists
 
 - name: "Install python {{ python_version }}"
   shell: "{{ pyenv_exec }} install --skip-existing {{ python_version }}"
