@@ -21,7 +21,6 @@
     name:
       - jq
       - httpie
-      - guake
       - htop
       - cifs-utils
       - ufw
@@ -33,3 +32,5 @@
       - expect
       - bat
       - xclip
+      - zip
+      - pass

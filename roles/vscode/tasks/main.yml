@@ -1,17 +1,5 @@
 ---
 
-- name: Add vscode key
-  apt_key:
-    url: https://packages.microsoft.com/keys/microsoft.asc
-
-- name: Add vscode ppa
-  apt_repository:
-    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
-
-- name: Install Visual Studio Code
-  apt:
-    name: [apt-transport-https, code]
-
 - name: Install settings sync extension
   shell: code --install-extension Shan.code-settings-sync
   register: result

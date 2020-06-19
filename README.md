@@ -3,8 +3,8 @@
 ![ansible](ansible.png)
 
 linux-workstation-setup is a small project based on ansible to automate software installation for fresh linux install.   
-[arch-distros](https://github.com/andrcuns/linux-workstation-setup) - branch for arch based linux distributions using pacman package manager and aur software.\
-[ubuntu-distros](https://github.com/andrcuns/linux-workstation-setup/tree/ubuntu-distros) - branch for ubuntu based distros using apt package manager and snaps.\
+[ubuntu-distros](https://github.com/andrcuns/linux-workstation-setup/tree/ubuntu-distros) - this branch mainly defines cli software suitable
+for using in WSL ubuntu based distributions
 
 ## Usage
 

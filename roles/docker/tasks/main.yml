@@ -1,34 +1,6 @@
 ---
 
-- name: Install Docker
-  apt:
-    name:
-      - docker
-      - docker-compose
-
-- name: Add user to docker group
-  user:
-    name: "{{ user.name }}"
-    groups: docker
-    append: yes
-
 - name: Installing lazydocker
   shell: "curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash"
   args:
     warn: false
-
-- name: Install CLI password manager
-  apt:
-    name: pass
-
-- name: Add docker credentials helper
-  unarchive:
-    src: "https://github.com/docker/docker-credential-helpers/releases/download/{{ docker_cred_helper_version }}/docker-credential-pass-{{ docker_cred_helper_version }}-amd64.tar.gz"
-    dest: /usr/local/bin
-    remote_src: yes
-
-- name: Add docker config file
-  template:
-    src: config.json.j2
-    dest: "{{ user.home }}/.docker"
-  become: no

@@ -1,7 +1,0 @@
----
-
-- name: Install gnome specific software
-  apt:
-    name:
-      - gnome-tweaks
-      - gpaste
