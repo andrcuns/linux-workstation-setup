@@ -1,43 +1,18 @@
 ---
 
 - name: Perform upgrade
-  pacman:
+  apt:
     update_cache: yes
-    upgrade: yes
-
-- name: Install dev dependencies
-  pacman:
-    name:
-      - git
-      - base-devel
-      - python
-    state: latest
+    upgrade: dist
 
 - name: Install various tools
-  pacman:
+  apt:
     name:
-      - jq
-      - httpie
-      - guake
+      - build-essential
       - htop
-      - cifs-utils
-      - ufw
-      - ecryptfs-utils
-      - bat
-      - ncdu
-      - tldr
-      - python-pip
-      - expect
-      - openvpn
-      - networkmanager-openvpn
-      - prettyping
+      - nfs-kernel-server
+      - qbittorrent
+      - rsync
+      - openssh-server
+      - curl
     state: latest
-
-- name: Install additional aur software
-  aur:
-    name:
-      - direnv
-      - albert
-    use: makepkg
-    skip_installed: yes
-  become: no

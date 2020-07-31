@@ -1,8 +1,0 @@
----
-
-- name: Install bitwarden
-  aur:
-    name: [bitwarden-bin, bitwarden-cli]
-    use: makepkg
-    skip_installed: yes
-  become: no

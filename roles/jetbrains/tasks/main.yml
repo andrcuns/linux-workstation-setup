@@ -1,8 +1,0 @@
----
-
-- name: Install JetBrains toolbox
-  aur:
-    name: jetbrains-toolbox
-    use: makepkg
-    skip_installed: yes
-  become: no

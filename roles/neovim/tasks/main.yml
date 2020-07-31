@@ -1,7 +1,7 @@
 ---
 
 - name: Install nvim
-  pacman:
+  apt:
     name: neovim
     state: latest
 

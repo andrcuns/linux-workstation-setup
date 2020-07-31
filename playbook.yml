@@ -3,34 +3,17 @@
 - hosts: localhost
   become: yes
   roles:
-  # General
+    # General
     - { role: common, tags: "common" }
-    - { role: git, tags: "git" }
     - { role: shell, tags: "shell", become: no }
     - { role: docker, tags: "docker" }
     - { role: configuration, tags: "configuration" }
-    
-    # Programming languages
-    - { role: sdks, tags: "sdks", become: no }
-    - { role: ruby, tags: "ruby", become: no }
-    - { role: node, tags: "node" }
 
     # Editors
-    - { role: atom, tags: "atom" }
     - { role: neovim, tags: "neovim" }
-    - { role: jetbrains, tags: "jetbrains" }
-    - { role: vscode, tags: "vscode" }
-
-    # Desktop
-    - { role: chrome, tags: "chrome" }
-    - { role: spotify, tags: "spotify" }
-    - { role: slack, tags: "slack" }
-    - { role: rambox, tags: "rambox" }
-    - { role: pass, tags: "pass" }
-    - { role: virtualbox, tags: "virtualbox" }
     
     # Dotfiles
     - { role: stow, tags: "stow" }
 
-    # Laptop
-    # - { role: xps, tags: "xps" }
+    # Headless display
+    - { role: video, tags: "video" }

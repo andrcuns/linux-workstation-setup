@@ -1,8 +1,0 @@
----
-
-- name: Install Google Chrome
-  aur:
-    name: google-chrome
-    use: makepkg
-    skip_installed: yes
-  become: no

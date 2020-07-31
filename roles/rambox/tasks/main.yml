@@ -1,8 +1,0 @@
----
-
-- name: Install rambox
-  aur:
-    name: rambox-bin
-    use: makepkg
-    skip_installed: yes
-  become: no

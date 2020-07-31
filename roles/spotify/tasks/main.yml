@@ -1,8 +1,0 @@
----
-
-- name: Install Spotify client
-  aur:
-    name: spotify
-    use: makepkg
-    skip_installed: yes
-  become: no

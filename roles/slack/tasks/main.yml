@@ -1,8 +1,0 @@
----
-
-- name: Install slack desktop
-  aur:
-    name: slack-desktop
-    use: makepkg
-    skip_installed: yes
-  become: no

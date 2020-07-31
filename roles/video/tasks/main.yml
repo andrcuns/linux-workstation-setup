@@ -1,0 +1,26 @@
+---
+  
+- name: Install dummy video driver
+  apt:
+    name: xserver-xorg-video-dummy
+    state: latest
+
+- name: Install x11vnc
+  apt:
+    name: x11vnc
+    state: latest
+
+- name: Create initial vnc password
+  command: "x11vnc -storepasswd changeme {{ user.home }}/.vnc/passwd"
+  become: no
+
+- name: Create xorg config
+  template:
+    src: xorg.conf.j2
+    dest: /usr/share/X11/xorg.conf.d/xorg.conf
+
+- name: Create .xprofile startup file
+  template:
+    src: .xprofile.j2
+    dest: "{{ user.home }}/.xprofile"
+  become: no
