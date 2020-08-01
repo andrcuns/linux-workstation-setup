@@ -2,7 +2,9 @@
 
 - name: Install Docker
   apt:
-    name: [docker, docker-compose]
+    name:
+      - docker
+      - docker-compose
     state: latest 
 
 - name: Add user to docker group

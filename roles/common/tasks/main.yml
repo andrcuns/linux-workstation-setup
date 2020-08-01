@@ -15,4 +15,6 @@
       - rsync
       - openssh-server
       - curl
+      - ncdu
+      - bat
     state: latest

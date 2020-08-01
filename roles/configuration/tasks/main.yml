@@ -9,3 +9,9 @@
   with_items:
     - { line: "#Password less sudo", regexp: '^#Password' }
     - { line: "{{ user.name }} ALL=(ALL) NOPASSWD: ALL", regexp: '^{{ user.name }}' }
+
+- name: Add torrent to autostart applications
+  template:
+    src: qBittorrent.desktop.j2
+    dest: "{{ user.home }}/.config/autostart/qBittorrent.desktop"
+  become: no
